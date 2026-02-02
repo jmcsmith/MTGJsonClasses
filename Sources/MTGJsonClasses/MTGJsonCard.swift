@@ -43,7 +43,6 @@ struct MTGJsonCard: Decodable {
     let variations: [String]?
     let securityStamp: String?
     let rulings: [MTGJsonRuling]?
-    let isStarter: Bool?
     let promoTypes: [String]?
     let frameEffects: [String]?
     let leadershipSkills: MTGJsonLeadershipSkills?   // CHANGED: was [String]?
