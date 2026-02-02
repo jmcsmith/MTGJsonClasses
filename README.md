@@ -2,6 +2,8 @@
 
 This package provides Swift models/DTOs for decoding MTGJSON data and related TCGPlayer payloads, suitable for iOS, macOS, and other Swift platforms.
 
+[![Tests](https://github.com/jmcsmith/MTGJsonClasses/actions/workflows/swift.yml/badge.svg)](https://github.com/jmcsmith/MTGJsonClasses/actions/workflows/swift.yml)
+
 ## Features
 
 - Decodable Swift types for MTGJSON set files, cards, tokens, and related data (e.g. `MTGJsonSetFile`, `MTGJsonBooster`, `MTGJsonCardFace`, `MTGJsonToken`).
