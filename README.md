@@ -4,7 +4,7 @@ Swift models/DTOs for decoding MTGJSON data and related TCGPlayer payloads. Work
 
 [![Tests](https://github.com/jmcsmith/MTGJsonClasses/actions/workflows/swift.yml/badge.svg)](https://github.com/jmcsmith/MTGJsonClasses/actions/workflows/swift.yml)
 [![Swift 6.1](https://img.shields.io/badge/Swift-6.1-orange?logo=swift)](https://swift.org) [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-compatible-orange?logo=swift)](https://www.swift.org/package-manager/)
-[![Xcode 26.2+](https://img.shields.io/badge/Xcode-26.2%2B-blue?logo=xcode)](https://developer.apple.com/xcode/) ![Platforms](https://img.shields.io/badge/Platforms-iOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS%20%7C%20visionOS-blue) [![License](https://img.shields.io/github/license/jmcsmith/MTGJsonClasses)](https://github.com/jmcsmith/MTGJsonClasses/blob/main/LICENSE)
+[![Xcode 26.2+](https://img.shields.io/badge/Xcode-26.2%2B-blue?logo=xcode)](https://developer.apple.com/xcode/) ![Platforms](https://img.shields.io/badge/Platforms-iOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS%20%7C%20visionOS-blue) 
 
 ## Features
 
