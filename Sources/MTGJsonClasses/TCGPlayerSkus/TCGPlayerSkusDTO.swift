@@ -17,16 +17,16 @@ import Foundation
 ///
 /// Note: The example JSON provided shows a trailing comma inside one array;
 /// trailing commas are not valid JSON. Ensure the source JSON is valid when decoding.
-nonisolated struct TCGPlayerSkusDTO: Decodable {
+public final class TCGPlayerSkusDTO: Decodable {
     let meta: Meta
     let data: [String: [SKU]]
 
-    struct Meta: Decodable {
+    public final class Meta: Decodable {
         let date: String
         let version: String
     }
 
-    struct SKU: Decodable {
+    public final class SKU: Decodable {
         let condition: String
         let finish: String? // Optional in some entries
         let language: String
