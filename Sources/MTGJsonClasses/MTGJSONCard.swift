@@ -7,27 +7,29 @@ public final class MTGJSONCard: Codable {
     public var asciiName: String?
     public var faceName: String?
 
-    public var layout: String?
+    public var layout: String
     public var side: String?
+    public var attractionLights: [Int]?
 
-    public var number: String?
-    public var rarity: String?
-    public var setCode: String?
-    public var language: String?
+    public var number: String
+    public var rarity: String
+    public var setCode: String
+    public var language: String
 
     public var manaCost: String?
-    public var manaValue: Double?
-    public var convertedManaCost: Double?
+    public var manaValue: Double
+    public var convertedManaCost: Double
     public var faceManaValue: Double?
     public var faceConvertedManaCost: Double?
 
-    public var type: String?
-    public var types: [String]?
-    public var supertypes: [String]?
-    public var subtypes: [String]?
+    public var type: String
+    public var types: [String] = []
+    public var supertypes: [String] = []
+    public var subtypes: [String] = []
 
     public var text: String?
     public var originalText: String?
+    public var originalType: String?
     public var printedText: String?
 
     public var printedName: String?
@@ -36,35 +38,47 @@ public final class MTGJSONCard: Codable {
     public var power: String?
     public var toughness: String?
     public var loyalty: String?
+    public var defense: String?
+    public var hand: String?
+    public var life: String?
 
     public var artist: String?
     public var artistIds: [String]?
+    public var signature: String?
 
     public var flavorText: String?
     public var flavorName: String?
+    public var faceFlavorName: String?
 
-    public var colors: [String]?
-    public var colorIdentity: [String]?
+    public var colors: [String] = []
+    public var colorIdentity: [String] = []
     public var colorIndicator: [String]?
     public var producedMana: [String]?
 
     public var keywords: [String]?
     public var frameEffects: [String]?
-    public var frameVersion: String?
-    public var borderColor: String?
+    public var frameVersion: String
+    public var borderColor: String
     public var watermark: String?
     public var securityStamp: String?
 
-    public var finishes: [String]?
-    public var availability: [String]?
+    public var finishes: [String] = []
+    public var availability: [String] = []
     public var boosterTypes: [String]?
+    public var subsets: [String]?
 
-    public var hasFoil: Bool?
-    public var hasNonFoil: Bool?
+    public var hasFoil: Bool
+    public var hasNonFoil: Bool
     public var hasContentWarning: Bool?
+    public var hasAlternativeDeckLimit: Bool?
 
     public var isAlternative: Bool?
     public var isFullArt: Bool?
+    public var isFunny: Bool?
+    public var isOversized: Bool?
+    public var isStarter: Bool?
+    public var isTextless: Bool?
+    public var isTimeshifted: Bool?
     public var isGameChanger: Bool?
     public var isOnlineOnly: Bool?
     public var isPromo: Bool?
@@ -77,14 +91,15 @@ public final class MTGJSONCard: Codable {
     public var edhrecRank: Int?
     public var edhrecSaltiness: Double?
 
-    public var identifiers: MTGJSONIdentifiers?
-    public var legalities: MTGJSONLegalities?
+    public var identifiers: MTGJSONIdentifiers
+    public var legalities: MTGJSONLegalities
     public var leadershipSkills: MTGJSONLeadershipSkills?
 
     public var foreignData: [MTGJSONForeignData]?
     public var rulings: [MTGJSONRuling]?
 
     public var otherFaceIds: [String]?
+    public var cardParts: [String]?
     public var variations: [String]?
 
     public var relatedCards: MTGJSONRelatedCards?
@@ -96,15 +111,59 @@ public final class MTGJSONCard: Codable {
     public var rebalancedPrintings: [String]?
 
     public var promoTypes: [String]?
-    public var purchaseUrls: MTGJSONPurchaseUrls?
+    public var purchaseUrls: MTGJSONPurchaseUrls
 
     public var sourceProducts: MTGJSONSourceProducts?
 
     public init(
         uuid: String,
-        name: String
+        name: String,
+        layout: String,
+        number: String,
+        rarity: String,
+        setCode: String,
+        language: String,
+        manaValue: Double,
+        convertedManaCost: Double,
+        type: String,
+        types: [String] = [],
+        supertypes: [String] = [],
+        subtypes: [String] = [],
+        colors: [String] = [],
+        colorIdentity: [String] = [],
+        frameVersion: String,
+        borderColor: String,
+        finishes: [String] = [],
+        availability: [String] = [],
+        hasFoil: Bool,
+        hasNonFoil: Bool,
+        identifiers: MTGJSONIdentifiers,
+        legalities: MTGJSONLegalities,
+        purchaseUrls: MTGJSONPurchaseUrls
     ) {
         self.uuid = uuid
         self.name = name
+        self.layout = layout
+        self.number = number
+        self.rarity = rarity
+        self.setCode = setCode
+        self.language = language
+        self.manaValue = manaValue
+        self.convertedManaCost = convertedManaCost
+        self.type = type
+        self.types = types
+        self.supertypes = supertypes
+        self.subtypes = subtypes
+        self.colors = colors
+        self.colorIdentity = colorIdentity
+        self.frameVersion = frameVersion
+        self.borderColor = borderColor
+        self.finishes = finishes
+        self.availability = availability
+        self.hasFoil = hasFoil
+        self.hasNonFoil = hasNonFoil
+        self.identifiers = identifiers
+        self.legalities = legalities
+        self.purchaseUrls = purchaseUrls
     }
 }
