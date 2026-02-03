@@ -21,18 +21,19 @@ public final class TCGPlayerSkusDTO: Decodable {
     let meta: Meta
     let data: [String: [SKU]]
 
-    public final class Meta: Decodable {
-        let date: String
-        let version: String
-    }
 
-    public final class SKU: Decodable {
-        let condition: String
-        let finish: String? // Optional in some entries
-        let language: String
-        let printing: String
-        let productId: String
-        let skuId: String
-    }
 
+}
+public final class Meta: Decodable {
+    let date: String
+    let version: String
+}
+
+public final class SKU: Decodable {
+    let condition: String
+    let finish: String? // Optional in some entries
+    let language: String
+    let printing: String
+    let productId: String
+    let skuId: String
 }
