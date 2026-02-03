@@ -18,22 +18,20 @@ import Foundation
 /// Note: The example JSON provided shows a trailing comma inside one array;
 /// trailing commas are not valid JSON. Ensure the source JSON is valid when decoding.
 public final class TCGPlayerSkusDTO: Decodable {
-    let meta: Meta
-    let data: [String: [SKU]]
-
-
-
+    public let meta: Meta
+    public let data: [String: [SKU]]
 }
+
 public final class Meta: Decodable {
-    let date: String
-    let version: String
+    public let date: String
+    public let version: String
 }
 
 public final class SKU: Decodable {
-    let condition: String
-    let finish: String? // Optional in some entries
-    let language: String
-    let printing: String
-    let productId: String
-    let skuId: String
+    public let condition: String
+    public let finish: String? // Optional in some entries
+    public let language: String
+    public let printing: String
+    public let productId: String
+    public let skuId: String
 }
