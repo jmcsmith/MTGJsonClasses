@@ -1,18 +1,16 @@
 import Foundation
 
 public final class MTGJSONSealedProduct: Codable {
-    public var uuid: String
-    public var name: String
-    public var category: String?
-    public var subtype: String?
-
-    public var releaseDate: String?
-    public var language: String?
     public var cardCount: Int?
-
+    public var category: String?
     public var contents: MTGJSONSealedProductContents?
     public var identifiers: MTGJSONIdentifiers?
+    public var language: String?
+    public var name: String
     public var purchaseUrls: MTGJSONPurchaseUrls?
+    public var releaseDate: String?
+    public var subtype: String?
+    public var uuid: String
 
     public init(
         uuid: String,

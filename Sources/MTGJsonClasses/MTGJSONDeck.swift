@@ -1,24 +1,20 @@
 import Foundation
 
 public final class MTGJSONDeck: Codable {
+    public var cards: [MTGJSONDeckCard]?
     public var code: String?
-    public var name: String
-    public var type: String?
-    public var releaseDate: String?
-
-    public var sourceSetCodes: [String]?
-    public var sealedProductUuids: [String]?
-
     public var commander: [MTGJSONDeckCard]?
     public var displayCommander: [MTGJSONDeckCard]?
-
     public var mainBoard: [MTGJSONDeckCard]?
-    public var sideBoard: [MTGJSONDeckCard]?
-    public var cards: [MTGJSONDeckCard]?
-
+    public var name: String
     public var planes: [MTGJSONDeckCard]?
+    public var releaseDate: String?
     public var schemes: [MTGJSONDeckCard]?
+    public var sideBoard: [MTGJSONDeckCard]?
+    public var sourceSetCodes: [String]?
+    public var sealedProductUuids: [String]?
     public var tokens: [MTGJSONDeckCard]?
+    public var type: String?
 
     public init(
         code: String? = nil,

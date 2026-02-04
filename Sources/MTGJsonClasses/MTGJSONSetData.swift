@@ -2,46 +2,37 @@ import Foundation
 
 public final class MTGJSONSetData: Codable {
     public var baseSetSize: Int
-    public var totalSetSize: Int
     public var block: String?
-
+    public var booster: MTGJSONBooster?
+    public var cards: [MTGJSONCard]
+    public var cardsphereSetId: Int?
     public var code: String
     public var codeV3: String?
-    public var keyruneCode: String
-    public var mtgoCode: String?
-
-    public var name: String
-    public var type: String
-    public var parentCode: String?
-    public var releaseDate: String
-
-    public var languages: [String]?
-
+    public var decks: [MTGJSONDeck]?
     public var isFoilOnly: Bool
     public var isForeignOnly: Bool?
-    public var isPaperOnly: Bool?
     public var isNonFoilOnly: Bool?
     public var isOnlineOnly: Bool
+    public var isPaperOnly: Bool?
     public var isPartialPreview: Bool?
-
-    public var cardsphereSetId: Int?
+    public var keyruneCode: String
+    public var languages: [String]?
     public var mcmId: Int?
     /// Some MTGJSON exports emit `mcmIdExtras` as either `[Int]` or a single `Int`.
     /// We store it as an array; if the JSON is a single number we coerce to `[number]`.
     public var mcmIdExtras: [Int]?
     public var mcmName: String?
-
+    public var mtgoCode: String?
+    public var name: String
+    public var parentCode: String?
+    public var releaseDate: String
+    public var sealedProduct: [MTGJSONSealedProduct]?
     public var tcgplayerGroupId: Int?
     public var tokenSetCode: String?
-
-    public var translations: MTGJSONTranslations
-
-    public var booster: MTGJSONBooster?
-    public var sealedProduct: [MTGJSONSealedProduct]?
-    public var decks: [MTGJSONDeck]?
-
-    public var cards: [MTGJSONCard]
     public var tokens: [MTGJSONToken]
+    public var totalSetSize: Int
+    public var translations: MTGJSONTranslations
+    public var type: String
 
     private enum CodingKeys: String, CodingKey {
         case baseSetSize, totalSetSize, block
