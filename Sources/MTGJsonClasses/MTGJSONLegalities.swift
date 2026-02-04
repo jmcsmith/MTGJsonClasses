@@ -5,9 +5,11 @@ public final class MTGJSONLegalities: Codable {
     public var brawl: String?
     public var commander: String?
     public var duel: String?
+    public var explorer: String?
     public var future: String?
     public var gladiator: String?
     public var historic: String?
+    public var historicbrawl: String?
     public var legacy: String?
     public var modern: String?
     public var oathbreaker: String?
