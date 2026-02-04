@@ -15,7 +15,7 @@ struct MTGJSONDecodingTests {
 
     @Test("Decode MTGJsonSetFile for set from MTGJSON (live fetch)")
     func decodeSetFile() async throws {
-        let code = "OM2"
+        let code = "AFR"
         // Live fetch from MTGJSON; this makes the test network-dependent.
         let url = URL(string: "https://mtgjson.com/api/v5/\(code).json")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 60)
@@ -26,8 +26,6 @@ struct MTGJSONDecodingTests {
 
         let decoder = JSONDecoder()
         let setFile: MTGJsonClasses.MTGJSONSetFile = try decoder.decode(MTGJsonClasses.MTGJSONSetFile.self, from: data)
-
-        print(setFile.data.isPartialPreview)
         
         // Basic sanity assertions; do not assume specific sizes as dataset may evolve.
         #expect(setFile.data.code.uppercased() == code)

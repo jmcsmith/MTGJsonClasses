@@ -72,7 +72,7 @@ public final class MTGJSONToken: Codable {
 
     public var signature: String?
 
-    public var sourceProducts: [String]?
+    public var sourceProducts: MTGJSONSourceProducts?
 
     public var subsets: [String]?
 
