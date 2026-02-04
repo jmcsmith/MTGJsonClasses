@@ -2,13 +2,13 @@ import Foundation
 
 /// DTO for decoding TCGplayer SKUs response.
 /// Supports `meta` and a `data` dictionary keyed by card UUID.
-public final class TCGPlayerSkusDTO: Decodable {
+public struct TCGPlayerSkusDTO: Decodable, Sendable {
     public let meta: Meta
     public let data: [String: [SKU]]
 
     private enum CodingKeys: String, CodingKey { case meta, data }
 
-    public required init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.meta = try container.decode(Meta.self, forKey: .meta)
         self.data = try container.decode([String: [SKU]].self, forKey: .data)
@@ -16,13 +16,13 @@ public final class TCGPlayerSkusDTO: Decodable {
 }
 
 /// Metadata for the SKUs payload.
-public final class Meta: Decodable {
+public struct Meta: Decodable, Sendable {
     public let date: String
     public let version: String
 }
 
 /// A single TCGplayer SKU entry.
-public final class SKU: Decodable {
+public struct SKU: Decodable, Sendable {
     public let condition: Condition
     public let finish: Finish? // Optional because some payloads omit this field
     public let language: Language
@@ -34,7 +34,7 @@ public final class SKU: Decodable {
         case condition, finish, language, printing, productId, skuId
     }
 
-    public required init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.condition = try container.decode(Condition.self, forKey: .condition)
         self.finish = try container.decodeIfPresent(Finish.self, forKey: .finish)
@@ -59,7 +59,7 @@ public final class SKU: Decodable {
 
     // MARK: - Value Types
 
-    public enum Condition: Decodable, Equatable {
+    public enum Condition: Decodable, Equatable, Sendable {
         case nearMint
         case lightlyPlayed
         case moderatelyPlayed
@@ -80,7 +80,7 @@ public final class SKU: Decodable {
         }
     }
 
-    public enum Finish: Decodable, Equatable {
+    public enum Finish: Decodable, Equatable, Sendable {
         case foil
         case nonFoil
         case foilEtched
@@ -97,7 +97,7 @@ public final class SKU: Decodable {
         }
     }
 
-    public enum Language: Decodable, Equatable {
+    public enum Language: Decodable, Equatable, Sendable {
         case english
         case chineseSimplified
         case chineseTraditional
@@ -130,7 +130,7 @@ public final class SKU: Decodable {
         }
     }
 
-    public enum Printing: Decodable, Equatable {
+    public enum Printing: Decodable, Equatable, Sendable {
         case foil
         case nonFoil
         case unknown(String)

@@ -1,6 +1,6 @@
 import Foundation
 
-public final class MTGJSONSealedProductContentItem: Codable {
+public struct MTGJSONSealedProductContentItem: Codable, Sendable {
     public var count: Int?
     public var name: String?
     public var set: String?

@@ -1,6 +1,6 @@
 import Foundation
 
-public final class MTGJSONCard: Codable {
+public struct MTGJSONCard: Codable, Sendable {
     public var artist: String?
     public var artistIds: [String]?
     public var asciiName: String?
@@ -143,3 +143,4 @@ public final class MTGJSONCard: Codable {
         self.purchaseUrls = purchaseUrls
     }
 }
+

@@ -1,6 +1,6 @@
 import Foundation
 
-public final class MTGJSONSetFile: Codable {
+public struct MTGJSONSetFile: Codable, Sendable {
     public var data: MTGJSONSetData
     public var meta: MTGJSONMeta
 
@@ -9,3 +9,4 @@ public final class MTGJSONSetFile: Codable {
         self.data = data
     }
 }
+

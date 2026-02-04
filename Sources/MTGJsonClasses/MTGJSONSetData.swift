@@ -1,38 +1,38 @@
 import Foundation
 
-public final class MTGJSONSetData: Codable {
-    public var baseSetSize: Int
-    public var block: String?
-    public var booster: MTGJSONBooster?
-    public var cards: [MTGJSONCard]
-    public var cardsphereSetId: Int?
-    public var code: String
-    public var codeV3: String?
-    public var decks: [MTGJSONDeck]?
-    public var isFoilOnly: Bool
-    public var isForeignOnly: Bool?
-    public var isNonFoilOnly: Bool?
-    public var isOnlineOnly: Bool
-    public var isPaperOnly: Bool?
-    public var isPartialPreview: Bool?
-    public var keyruneCode: String
-    public var languages: [String]?
-    public var mcmId: Int?
+public struct MTGJSONSetData: Codable, Sendable {
+    public let baseSetSize: Int
+    public let block: String?
+    public let booster: MTGJSONBooster?
+    public let cards: [MTGJSONCard]
+    public let cardsphereSetId: Int?
+    public let code: String
+    public let codeV3: String?
+    public let decks: [MTGJSONDeck]?
+    public let isFoilOnly: Bool
+    public let isForeignOnly: Bool?
+    public let isNonFoilOnly: Bool?
+    public let isOnlineOnly: Bool
+    public let isPaperOnly: Bool?
+    public let isPartialPreview: Bool?
+    public let keyruneCode: String
+    public let languages: [String]?
+    public let mcmId: Int?
     /// Some MTGJSON exports emit `mcmIdExtras` as either `[Int]` or a single `Int`.
     /// We store it as an array; if the JSON is a single number we coerce to `[number]`.
-    public var mcmIdExtras: [Int]?
-    public var mcmName: String?
-    public var mtgoCode: String?
-    public var name: String
-    public var parentCode: String?
-    public var releaseDate: String
-    public var sealedProduct: [MTGJSONSealedProduct]?
-    public var tcgplayerGroupId: Int?
-    public var tokenSetCode: String?
-    public var tokens: [MTGJSONToken]
-    public var totalSetSize: Int
-    public var translations: MTGJSONTranslations
-    public var type: String
+    public let mcmIdExtras: [Int]?
+    public let mcmName: String?
+    public let mtgoCode: String?
+    public let name: String
+    public let parentCode: String?
+    public let releaseDate: String
+    public let sealedProduct: [MTGJSONSealedProduct]?
+    public let tcgplayerGroupId: Int?
+    public let tokenSetCode: String?
+    public let tokens: [MTGJSONToken]
+    public let totalSetSize: Int
+    public let translations: MTGJSONTranslations
+    public let type: String
 
     private enum CodingKeys: String, CodingKey {
         case baseSetSize, totalSetSize, block
@@ -111,61 +111,95 @@ public final class MTGJSONSetData: Codable {
         self.tokens = tokens
     }
 
-    public required init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
 
-        self.baseSetSize = try c.decode(Int.self, forKey: .baseSetSize)
-        self.totalSetSize = try c.decode(Int.self, forKey: .totalSetSize)
-        self.block = try c.decodeIfPresent(String.self, forKey: .block)
+        let baseSetSize = try c.decode(Int.self, forKey: .baseSetSize)
+        let totalSetSize = try c.decode(Int.self, forKey: .totalSetSize)
+        let block = try c.decodeIfPresent(String.self, forKey: .block)
 
-        self.code = try c.decode(String.self, forKey: .code)
-        self.codeV3 = try c.decodeIfPresent(String.self, forKey: .codeV3)
-        self.keyruneCode = try c.decode(String.self, forKey: .keyruneCode)
-        self.mtgoCode = try c.decodeIfPresent(String.self, forKey: .mtgoCode)
+        let code = try c.decode(String.self, forKey: .code)
+        let codeV3 = try c.decodeIfPresent(String.self, forKey: .codeV3)
+        let keyruneCode = try c.decode(String.self, forKey: .keyruneCode)
+        let mtgoCode = try c.decodeIfPresent(String.self, forKey: .mtgoCode)
 
-        self.name = try c.decode(String.self, forKey: .name)
-        self.type = try c.decode(String.self, forKey: .type)
-        self.parentCode = try c.decodeIfPresent(String.self, forKey: .parentCode)
-        self.releaseDate = try c.decode(String.self, forKey: .releaseDate)
+        let name = try c.decode(String.self, forKey: .name)
+        let type = try c.decode(String.self, forKey: .type)
+        let parentCode = try c.decodeIfPresent(String.self, forKey: .parentCode)
+        let releaseDate = try c.decode(String.self, forKey: .releaseDate)
 
-        self.languages = try c.decodeIfPresent([String].self, forKey: .languages)
+        let languages = try c.decodeIfPresent([String].self, forKey: .languages)
 
-        self.isFoilOnly = try c.decode(Bool.self, forKey: .isFoilOnly)
-        self.isForeignOnly = try c.decodeIfPresent(Bool.self, forKey: .isForeignOnly)
-        self.isPaperOnly = try c.decodeIfPresent(Bool.self, forKey: .isPaperOnly)
-        self.isNonFoilOnly = try c.decodeIfPresent(Bool.self, forKey: .isNonFoilOnly)
-        self.isOnlineOnly = try c.decode(Bool.self, forKey: .isOnlineOnly)
-        self.isPartialPreview = try c.decodeIfPresent(Bool.self, forKey: .isPartialPreview)
+        let isFoilOnly = try c.decode(Bool.self, forKey: .isFoilOnly)
+        let isForeignOnly = try c.decodeIfPresent(Bool.self, forKey: .isForeignOnly)
+        let isPaperOnly = try c.decodeIfPresent(Bool.self, forKey: .isPaperOnly)
+        let isNonFoilOnly = try c.decodeIfPresent(Bool.self, forKey: .isNonFoilOnly)
+        let isOnlineOnly = try c.decode(Bool.self, forKey: .isOnlineOnly)
+        let isPartialPreview = try c.decodeIfPresent(Bool.self, forKey: .isPartialPreview)
 
-        self.cardsphereSetId = try c.decodeIfPresent(Int.self, forKey: .cardsphereSetId)
-        self.mcmId = try c.decodeIfPresent(Int.self, forKey: .mcmId)
+        let cardsphereSetId = try c.decodeIfPresent(Int.self, forKey: .cardsphereSetId)
+        let mcmId = try c.decodeIfPresent(Int.self, forKey: .mcmId)
 
         // FIX: accept either [Int] or Int for mcmIdExtras
+        let mcmIdExtras: [Int]?
         if c.contains(.mcmIdExtras) {
             if let arr = try? c.decode([Int].self, forKey: .mcmIdExtras) {
-                self.mcmIdExtras = arr
+                mcmIdExtras = arr
             } else if let single = try? c.decode(Int.self, forKey: .mcmIdExtras) {
-                self.mcmIdExtras = [single]
+                mcmIdExtras = [single]
             } else {
-                self.mcmIdExtras = nil
+                mcmIdExtras = nil
             }
         } else {
-            self.mcmIdExtras = nil
+            mcmIdExtras = nil
         }
 
-        self.mcmName = try c.decodeIfPresent(String.self, forKey: .mcmName)
+        let mcmName = try c.decodeIfPresent(String.self, forKey: .mcmName)
 
-        self.tcgplayerGroupId = try c.decodeIfPresent(Int.self, forKey: .tcgplayerGroupId)
-        self.tokenSetCode = try c.decodeIfPresent(String.self, forKey: .tokenSetCode)
+        let tcgplayerGroupId = try c.decodeIfPresent(Int.self, forKey: .tcgplayerGroupId)
+        let tokenSetCode = try c.decodeIfPresent(String.self, forKey: .tokenSetCode)
 
-        self.translations = try c.decode(MTGJSONTranslations.self, forKey: .translations)
+        let translations = try c.decode(MTGJSONTranslations.self, forKey: .translations)
 
-        self.booster = try c.decodeIfPresent(MTGJSONBooster.self, forKey: .booster)
-        self.sealedProduct = try c.decodeIfPresent([MTGJSONSealedProduct].self, forKey: .sealedProduct)
-        self.decks = try c.decodeIfPresent([MTGJSONDeck].self, forKey: .decks)
+        let booster = try c.decodeIfPresent(MTGJSONBooster.self, forKey: .booster)
+        let sealedProduct = try c.decodeIfPresent([MTGJSONSealedProduct].self, forKey: .sealedProduct)
+        let decks = try c.decodeIfPresent([MTGJSONDeck].self, forKey: .decks)
 
-        self.cards = try c.decode([MTGJSONCard].self, forKey: .cards)
-        self.tokens = try c.decode([MTGJSONToken].self, forKey: .tokens)
+        let cards = try c.decode([MTGJSONCard].self, forKey: .cards)
+        let tokens = try c.decode([MTGJSONToken].self, forKey: .tokens)
+
+        self = MTGJSONSetData(
+            baseSetSize: baseSetSize,
+            totalSetSize: totalSetSize,
+            block: block,
+            code: code,
+            codeV3: codeV3,
+            keyruneCode: keyruneCode,
+            mtgoCode: mtgoCode,
+            name: name,
+            type: type,
+            parentCode: parentCode,
+            releaseDate: releaseDate,
+            languages: languages,
+            isFoilOnly: isFoilOnly,
+            isForeignOnly: isForeignOnly,
+            isPaperOnly: isPaperOnly,
+            isNonFoilOnly: isNonFoilOnly,
+            isOnlineOnly: isOnlineOnly,
+            isPartialPreview: isPartialPreview,
+            cardsphereSetId: cardsphereSetId,
+            mcmId: mcmId,
+            mcmIdExtras: mcmIdExtras,
+            mcmName: mcmName,
+            tcgplayerGroupId: tcgplayerGroupId,
+            tokenSetCode: tokenSetCode,
+            translations: translations,
+            booster: booster,
+            sealedProduct: sealedProduct,
+            decks: decks,
+            cards: cards,
+            tokens: tokens
+        )
     }
 
     public func encode(to encoder: Encoder) throws {

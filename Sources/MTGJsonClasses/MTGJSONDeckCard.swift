@@ -1,9 +1,9 @@
 import Foundation
 
-public final class MTGJSONDeckCard: Codable {
-    public var count: Int
-    public var uuid: String
-    public var isFoil: Bool?
+public struct MTGJSONDeckCard: Codable, Sendable {
+    public let count: Int
+    public let uuid: String
+    public let isFoil: Bool?
 
     public init(count: Int, uuid: String, isFoil: Bool? = nil) {
         self.count = count
@@ -11,3 +11,4 @@ public final class MTGJSONDeckCard: Codable {
         self.isFoil = isFoil
     }
 }
+

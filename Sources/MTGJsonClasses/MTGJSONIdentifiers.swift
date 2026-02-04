@@ -1,6 +1,6 @@
 import Foundation
 
-public final class MTGJSONIdentifiers: Codable {
+public struct MTGJSONIdentifiers: Codable, Sendable {
     public var abuId: String?
     public var cardKingdomId: String?
     public var cardKingdomFoilId: String?

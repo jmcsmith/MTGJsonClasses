@@ -1,6 +1,6 @@
 import Foundation
 
-public final class MTGJSONBooster: Codable {
+public struct MTGJSONBooster: Codable, Sendable {
     public var arena: MTGJSONBoosterConfiguration?
     public var boxTopper: MTGJSONBoosterConfiguration?
     public var collector: MTGJSONBoosterConfiguration?

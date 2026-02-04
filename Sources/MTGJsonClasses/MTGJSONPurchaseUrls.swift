@@ -1,6 +1,6 @@
 import Foundation
 
-public final class MTGJSONPurchaseUrls: Codable {
+public struct MTGJSONPurchaseUrls: Codable, Sendable {
     public var cardKingdom: String?
     public var cardKingdomFoil: String?
     public var cardmarket: String?

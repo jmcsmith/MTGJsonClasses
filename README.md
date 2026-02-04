@@ -9,42 +9,29 @@ Swift models/DTOs for decoding MTGJSON data and related TCGPlayer payloads. Work
 ## Features
 
 - Decodable Swift types for MTGJSON set files and related entities:
-  - `MTGJsonSetFile`, `MTGJsonSetData`, `MTGJsonMeta`
+  - `MTGJSONSetFile`, `MTGJSONSetData`, `MTGJSONMeta`
   - `MTGJsonCard`, `MTGJsonToken`
   - `MTGJsonBooster`, `MTGJsonBoosterMode`
-  - Supporting types like `MTGJsonCardIdentifiers`, `MTGJsonForeignData`, `MTGJsonLegalities`, `MTGJsonRuling`, `MTGJsonLeadershipSkills`, and utility `StringOrInt`.
-- DTOs for TCGPlayer SKUs responses: `TCGPlayerSkusDTO`.
+  - Supporting types like `MTGJSONIdentifiers`, `MTGJsonForeignData`, `MTGJsonLegalities`, `MTGJsonRuling`, `MTGJsonLeadershipSkills`, and utility `StringOrInt`.
+- DTOs for TCGplayer SKUs responses: `TCGPlayerSkusDTO` with nested `Meta` and `SKU` (including `Condition`, `Finish`, `Language`, `Printing`).
 - Foundation-based JSON decoding using `JSONDecoder` (no external dependencies).
 - Modern Swift code style; suitable for use with Swift Concurrency in your app code.
+- Swift Testing-based test suites covering decoding, including live MTGJSON fetch tests and `TCGPlayerSkusDTOTests`.
 
-## Requirements
-
-- Swift 6.1+
-- Xcode 26.2+
-- Platforms: iOS 15+, macOS 12+, watchOS 8+, tvOS 15+, visionOS 1.0+  
-  (The package itself is platform-agnostic; these are typical deployment minimums.)
-
-## Installation (Swift Package Manager)
-
-Add the package to your `Package.swift` dependencies. You can either track a branch during development or pin to a version once tags are available.
+## Usage
 
 ```swift
-// In your Package.swift
-.dependencies = [
-    // Option A: Track the main branch during development
-    .package(url: "https://github.com/jmcsmith/MTGJsonClasses.git", branch: "main"),
+import MTGJsonClasses
+import Foundation
 
-    // Option B: Pin to a version once tags are available
-    // .package(url: "https://github.com/jmcsmith/MTGJsonClasses.git", from: "0.1.0"),
-]
+let json = """
+{ "meta": { "date": "2025-09-20", "version": "5.2.2+20250920" },
+  "data": { "some-card-uuid": [
+    { "condition": "NEAR MINT", "language": "ENGLISH", "printing": "FOIL", "productId": 111268, "skuId": 3045711 }
+  ]}
+}
+""".data(using: .utf8)!
 
-.targets = [
-    .target(
-        name: "YourTarget",
-        dependencies: [
-            "MTGJsonClasses",
-        ]
-    ),
-]
-
+let dto = try JSONDecoder().decode(TCGPlayerSkusDTO.self, from: json)
+print(dto.meta.version) // 5.2.2+20250920
 

@@ -2,7 +2,7 @@ import Foundation
 
 /// Concrete model for known booster `contents` keys found across your uploaded files.
 /// (No Dictionary properties.)
-public final class MTGJSONBoosterContents: Codable {
+public struct MTGJSONBoosterContents: Codable, Sendable {
     public var arcaneMischief: Int?
     public var arcaneMischiefFoils: Int?
     public var basic: Int?

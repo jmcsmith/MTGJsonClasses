@@ -1,6 +1,6 @@
 import Foundation
 
-public final class MTGJSONBoosterSheetCard: Codable {
+public struct MTGJSONBoosterSheetCard: Codable, Sendable {
     public var uuid: String
     public var weight: Int
 

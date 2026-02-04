@@ -1,6 +1,6 @@
 import Foundation
 
-public final class MTGJSONDeck: Codable {
+public struct MTGJSONDeck: Codable, Sendable {
     public var cards: [MTGJSONDeckCard]?
     public var code: String?
     public var commander: [MTGJSONDeckCard]?

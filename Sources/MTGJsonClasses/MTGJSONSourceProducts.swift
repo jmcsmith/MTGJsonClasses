@@ -1,6 +1,6 @@
 import Foundation
 
-public final class MTGJSONSourceProducts: Codable {
+public struct MTGJSONSourceProducts: Codable, Sendable {
     public var foil: [String]?
     public var nonfoil: [String]?
 
@@ -9,3 +9,4 @@ public final class MTGJSONSourceProducts: Codable {
         self.nonfoil = nonfoil
     }
 }
+

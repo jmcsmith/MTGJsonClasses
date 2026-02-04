@@ -1,6 +1,6 @@
 import Foundation
 
-public final class MTGJSONTranslations: Codable {
+public struct MTGJSONTranslations: Codable, Sendable {
     public var chineseSimplified: String?
     public var chineseTraditional: String?
     public var french: String?
@@ -25,3 +25,4 @@ public final class MTGJSONTranslations: Codable {
         case spanish = "Spanish"
     }
 }
+

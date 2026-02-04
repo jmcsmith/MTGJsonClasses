@@ -2,7 +2,7 @@ import Foundation
 
 /// Tokens (and occasionally cards) may include a `relatedCards` object.
 /// Example in EOE: { "reverseRelated": [ ... ] }
-public final class MTGJSONRelatedCards: Codable {
+public struct MTGJSONRelatedCards: Codable, Sendable {
     public var related: [String]?
     public var reverseRelated: [String]?
 

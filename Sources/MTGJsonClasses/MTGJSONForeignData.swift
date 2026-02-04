@@ -1,6 +1,6 @@
 import Foundation
 
-public final class MTGJSONForeignData: Codable {
+public struct MTGJSONForeignData: Codable, Sendable {
 
     public var faceName: String?
     public var flavorText: String?
@@ -31,3 +31,4 @@ public final class MTGJSONForeignData: Codable {
         self.type = type
     }
 }
+

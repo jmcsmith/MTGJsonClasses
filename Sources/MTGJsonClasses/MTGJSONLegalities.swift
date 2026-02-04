@@ -1,6 +1,6 @@
 import Foundation
 
-public final class MTGJSONLegalities: Codable {
+public struct MTGJSONLegalities: Codable, Sendable {
     public var alchemy: String?
     public var brawl: String?
     public var commander: String?

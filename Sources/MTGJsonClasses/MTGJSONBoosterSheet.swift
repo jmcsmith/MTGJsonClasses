@@ -1,31 +1,47 @@
 import Foundation
 
-public final class MTGJSONBoosterSheet: Codable {
+public struct MTGJSONBoosterSheet: Codable, Sendable {
     /// Not in JSON — it's the object key from the parent `sheets` map.
     public var name: String = ""
 
-    public var allowDuplicates: Bool?
-    public var balanceColors: Bool?
-    public var fixed: Bool?
-    public var foil: Bool?
-    public var totalWeight: Int?
+    public let allowDuplicates: Bool?
+    public let balanceColors: Bool?
+    public let fixed: Bool?
+    public let foil: Bool?
+    public let totalWeight: Int?
 
-    public var cards: [MTGJSONBoosterSheetCard]?
+    public let cards: [MTGJSONBoosterSheetCard]?
 
     private enum CodingKeys: String, CodingKey {
         case allowDuplicates, balanceColors, fixed, foil, totalWeight, cards
     }
 
-    public required init(from decoder: Decoder) throws {
+    public init(name: String,
+                allowDuplicates: Bool?,
+                balanceColors: Bool?,
+                fixed: Bool?,
+                foil: Bool?,
+                totalWeight: Int?,
+                cards: [MTGJSONBoosterSheetCard]?) {
+        self.name = name
+        self.allowDuplicates = allowDuplicates
+        self.balanceColors = balanceColors
+        self.fixed = fixed
+        self.foil = foil
+        self.totalWeight = totalWeight
+        self.cards = cards
+    }
+
+    public init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
 
-        self.allowDuplicates = try c.decodeIfPresent(Bool.self, forKey: .allowDuplicates)
-        self.balanceColors = try c.decodeIfPresent(Bool.self, forKey: .balanceColors)
-        self.fixed = try c.decodeIfPresent(Bool.self, forKey: .fixed)
-        self.foil = try c.decodeIfPresent(Bool.self, forKey: .foil)
-        self.totalWeight = try c.decodeIfPresent(Int.self, forKey: .totalWeight)
+        let allowDuplicates = try c.decodeIfPresent(Bool.self, forKey: .allowDuplicates)
+        let balanceColors = try c.decodeIfPresent(Bool.self, forKey: .balanceColors)
+        let fixed = try c.decodeIfPresent(Bool.self, forKey: .fixed)
+        let foil = try c.decodeIfPresent(Bool.self, forKey: .foil)
+        let totalWeight = try c.decodeIfPresent(Int.self, forKey: .totalWeight)
 
-        // `cards` is a JSON object: { "<uuid>": <weight>, ... }
+        let cards: [MTGJSONBoosterSheetCard]?
         if c.contains(.cards) {
             let cardsContainer = try c.nestedContainer(keyedBy: MTGJSONAnyCodingKey.self, forKey: .cards)
             var list: [MTGJSONBoosterSheetCard] = []
@@ -35,11 +51,19 @@ public final class MTGJSONBoosterSheet: Codable {
                 let weight = try cardsContainer.decode(Int.self, forKey: key)
                 list.append(MTGJSONBoosterSheetCard(uuid: key.stringValue, weight: weight))
             }
-
-            self.cards = list.sorted { $0.uuid < $1.uuid }
+            cards = list.sorted { $0.uuid < $1.uuid }
         } else {
-            self.cards = nil
+            cards = nil
         }
+
+        // `name` is not decoded from JSON; it must be supplied externally.
+        self = MTGJSONBoosterSheet(name: "", // default empty string here; should be set by caller after decoding
+                                   allowDuplicates: allowDuplicates,
+                                   balanceColors: balanceColors,
+                                   fixed: fixed,
+                                   foil: foil,
+                                   totalWeight: totalWeight,
+                                   cards: cards)
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -59,3 +83,4 @@ public final class MTGJSONBoosterSheet: Codable {
         }
     }
 }
+

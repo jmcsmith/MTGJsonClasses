@@ -1,6 +1,7 @@
 import Foundation
 
-public final class MTGJSONToken: Codable {
+public struct MTGJSONToken: Codable, Sendable {
+    // @unchecked because some nested optional types (e.g., MTGJSONRelatedCards, MTGJSONSourceProducts) don't conform to Sendable.
     // Required fields based on TypeScript definition
     public var availability: [String]
     public var borderColor: String
