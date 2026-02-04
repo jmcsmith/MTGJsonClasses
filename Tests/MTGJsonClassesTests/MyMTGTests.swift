@@ -31,8 +31,8 @@ struct MTGJSONDecodingTests {
         
         // Basic sanity assertions; do not assume specific sizes as dataset may evolve.
         #expect(setFile.data.code.uppercased() == code)
-        #expect(setFile.data.name?.isEmpty == false)
-        #expect(setFile.data.cards.isEmpty == false || setFile.data.tokens?.isEmpty == false || setFile.data.isPartialPreview == true || setFile.data.sealedProduct?.isEmpty == false)
+        #expect(setFile.data.name.isEmpty == false)
+        #expect(setFile.data.cards.isEmpty == false || setFile.data.tokens.isEmpty == false || setFile.data.isPartialPreview == true || setFile.data.sealedProduct?.isEmpty == false)
 
 
     }
@@ -141,8 +141,8 @@ struct MTGJSONDecodingTests {
 
             // Basic sanity assertions; do not assume specific sizes as dataset may evolve.
             #expect(setFile.data.code.uppercased() == code)
-            #expect(setFile.data.name?.isEmpty == false)
-            #expect(setFile.data.cards.isEmpty == false || setFile.data.tokens?.isEmpty == false || setFile.data.isPartialPreview == true || setFile.data.sealedProduct?.isEmpty == false || setFile.data.code == "AECL")
+            #expect(setFile.data.name.isEmpty == false)
+            #expect(setFile.data.cards.isEmpty == false || setFile.data.tokens.isEmpty == false || setFile.data.isPartialPreview == true || setFile.data.sealedProduct?.isEmpty == false || setFile.data.code == "AECL")
            
         }
     }
