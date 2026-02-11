@@ -34,4 +34,28 @@ let json = """
 
 let dto = try JSONDecoder().decode(TCGPlayerSkusDTO.self, from: json)
 print(dto.meta.version) // 5.2.2+20250920
+```
 
+## Installation (Swift Package Manager)
+
+Add the package to your `Package.swift` dependencies. You can either track a branch during development or pin to a version once tags are available.
+
+```swift
+// In your Package.swift
+.dependencies = [
+    // Option A: Track the main branch during development
+    .package(url: "https://github.com/jmcsmith/MTGJsonClasses.git", branch: "main"),
+
+    // Option B: Pin to a version once tags are available
+    // .package(url: "https://github.com/jmcsmith/MTGJsonClasses.git", from: "0.1.0"),
+]
+
+.targets = [
+    .target(
+        name: "YourTarget",
+        dependencies: [
+            "MTGJsonClasses",
+        ]
+    ),
+]
+```
