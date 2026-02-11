@@ -8,18 +8,13 @@ public struct MTGJSONBoosterContents: Codable, Sendable {
     public var basic: Int?
     public var beastTerritory: Int?
     public var beastTerritoryFoils: Int?
+    public var celestialBasicLand: Int?
     public var coalitionCorps: Int?
     public var coalitionCorpsFoils: Int?
     public var coalitionLegion: Int?
     public var coalitionLegionFoils: Int?
-    public var commanderCard: Int?
-    public var celestialBasicLand: Int?
     public var commander: Int?
-    public var foilBoosterfun: Int?
-    public var nonFoilBoosterfun: Int?
-    public var stellarSightsLand: Int?
-    public var foilStellarSightsLand: Int?
-    public var galaxyStellarSightsLand: Int?
+    public var commanderCard: Int?
     public var common: Int?
     public var commonUncommonBorderless: Int?
     public var commonUncommonRetro: Int?
@@ -31,6 +26,7 @@ public struct MTGJSONBoosterContents: Codable, Sendable {
     public var foil: Int?
     public var foilAltBorderRareMythic: Int?
     public var foilBasic: Int?
+    public var foilBoosterfun: Int?
     public var foilCommander: Int?
     public var foilCommon: Int?
     public var foilCommonUncommonShowcase: Int?
@@ -41,9 +37,11 @@ public struct MTGJSONBoosterContents: Codable, Sendable {
     public var foilRareMythic: Int?
     public var foilRareMythicShowcase: Int?
     public var foilShowcaseRareMythic: Int?
+    public var foilStellarSightsLand: Int?
     public var foilUncommon: Int?
     public var foilUncommonShowcase: Int?
     public var foilWithShowcase: Int?
+    public var galaxyStellarSightsLand: Int?
     public var land: Int?
     public var legendaryRareMythic: Int?
     public var legendaryUncommon: Int?
@@ -52,6 +50,7 @@ public struct MTGJSONBoosterContents: Codable, Sendable {
     public var monsterTerritoryFoils: Int?
     public var mysticMischief: Int?
     public var mysticMischiefFoils: Int?
+    public var nonFoilBoosterfun: Int?
     public var nonfoilRareMythic: Int?
     public var nonlegendaryRareMythic: Int?
     public var nonlegendaryUncommon: Int?
@@ -73,6 +72,7 @@ public struct MTGJSONBoosterContents: Codable, Sendable {
     public var showcaseUncommon: Int?
     public var special: Int?
     public var starterDeckRare: Int?
+    public var stellarSightsLand: Int?
     public var texturedFoil: Int?
     public var theList: Int?
     public var totallyMerciless: Int?

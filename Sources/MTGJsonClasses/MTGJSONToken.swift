@@ -2,40 +2,30 @@ import Foundation
 
 public struct MTGJSONToken: Codable, Sendable {
     // @unchecked because some nested optional types (e.g., MTGJSONRelatedCards, MTGJSONSourceProducts) don't conform to Sendable.
-    // Required fields based on TypeScript definition
-    public var availability: [String]
-    public var borderColor: String
-    public var colorIdentity: [String]
-    public var colors: [String]
-    public var finishes: [String]
-    public var frameVersion: String
-    public var identifiers: MTGJSONIdentifiers
-    public var language: String
-    public var layout: String
-    public var name: String
-    public var number: String
-    public var setCode: String
-    public var subtypes: [String]
-    public var supertypes: [String]
-    public var type: String
-    public var types: [String]
-    public var uuid: String
-
-    // Optional fields
+    // Fields
     public var artist: String?
     public var artistIds: [String]?
     public var asciiName: String?
+    public var asciiNameDeprecated: String? // alias if needed
+    public var availability: [String]
     public var boosterTypes: [String]?
+    public var borderColor: String
     public var cardParts: [String]?
+    public var colorIdentity: [String]
     public var colorIndicator: [String]?
+    public var colors: [String]
     public var edhrecSaltiness: Double?
     public var faceFlavorName: String?
     public var faceName: String?
+    public var finishes: [String]
     public var flavorName: String?
     public var flavorText: String?
     public var frameEffects: [String]?
+    public var frameVersion: String
+    public var frameVersionDeprecated: String? // alias if needed
     public var hasFoil: Bool?
     public var hasNonFoil: Bool?
+    public var identifiers: MTGJSONIdentifiers
     public var isFullArt: Bool?
     public var isFunny: Bool?
     public var isOnlineOnly: Bool?
@@ -44,9 +34,13 @@ public struct MTGJSONToken: Codable, Sendable {
     public var isReprint: Bool?
     public var isTextless: Bool?
     public var keywords: [String]?
+    public var language: String
+    public var layout: String
     public var layoutSide: String? // not in TS; kept for backward compatibility if needed
     public var loyalty: String?
     public var manaCost: String?
+    public var name: String
+    public var number: String
     public var orientation: String?
     public var originalText: String?
     public var originalType: String?
@@ -57,16 +51,18 @@ public struct MTGJSONToken: Codable, Sendable {
     public var relatedCards: MTGJSONRelatedCards?
     public var reverseRelated: [String]?
     public var securityStamp: String?
+    public var setCode: String
     public var signature: String?
     public var sourceProducts: MTGJSONSourceProducts?
     public var subsets: [String]?
+    public var subtypes: [String]
+    public var supertypes: [String]
     public var tokenProducts: [MTGJSONTokenProduct]? // project-specific
     public var toughness: String?
+    public var type: String
+    public var types: [String]
+    public var uuid: String
     public var watermark: String?
-
-    // Backward-compatible fields retained from previous model
-    public var asciiNameDeprecated: String? // alias if needed
-    public var frameVersionDeprecated: String? // alias if needed
 
     public init(
         uuid: String,

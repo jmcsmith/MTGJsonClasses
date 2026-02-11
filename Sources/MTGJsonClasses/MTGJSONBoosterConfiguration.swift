@@ -1,13 +1,12 @@
 import Foundation
 
 public struct MTGJSONBoosterConfiguration: Codable, Sendable {
-    public let name: String?
-    public let languages: [String]?
-    public let boostersTotalWeight: Int?
-    public let sourceSetCodes: [String]?
-
     public let boosters: [MTGJSONBoosterPack]
+    public let boostersTotalWeight: Int?
+    public let languages: [String]?
+    public let name: String?
     public let sheets: [MTGJSONBoosterSheet]
+    public let sourceSetCodes: [String]?
 
     private enum CodingKeys: String, CodingKey {
         case name, languages, boostersTotalWeight, sourceSetCodes

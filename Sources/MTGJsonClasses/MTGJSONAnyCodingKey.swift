@@ -4,8 +4,8 @@ import Foundation
 /// Used as an implementation detail to decode JSON objects into arrays of classes
 /// (so your public model types don't need Dictionary properties).
 public struct MTGJSONAnyCodingKey: CodingKey {
-    public var stringValue: String
     public var intValue: Int?
+    public var stringValue: String
 
     public init?(stringValue: String) {
         self.stringValue = stringValue

@@ -3,8 +3,8 @@ import Foundation
 // A small wrapper that decodes either a JSON number or a string.
 // Access via .intValue or .stringValue as needed.
 struct StringOrInt: Decodable {
-    let stringValue: String
     var intValue: Int? { Int(stringValue) }
+    let stringValue: String
 
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()

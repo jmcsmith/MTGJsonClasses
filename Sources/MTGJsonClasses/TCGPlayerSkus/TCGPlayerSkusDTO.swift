@@ -3,8 +3,8 @@ import Foundation
 /// DTO for decoding TCGplayer SKUs response.
 /// Supports `meta` and a `data` dictionary keyed by card UUID.
 public struct TCGPlayerSkusDTO: Decodable, Sendable {
-    public let meta: Meta
     public let data: [String: [SKU]]
+    public let meta: Meta
 
     private enum CodingKeys: String, CodingKey { case meta, data }
 

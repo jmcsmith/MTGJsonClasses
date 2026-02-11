@@ -30,8 +30,6 @@ public struct MTGJSONCard: Codable, Sendable {
     public var hand: String?
     public var hasAlternativeDeckLimit: Bool?
     public var hasContentWarning: Bool?
-    public var hasFoil: Bool
-    public var hasNonFoil: Bool
     public var identifiers: MTGJSONIdentifiers
     public var isAlternative: Bool?
     public var isFullArt: Bool?
@@ -43,7 +41,6 @@ public struct MTGJSONCard: Codable, Sendable {
     public var isRebalanced: Bool?
     public var isReprint: Bool?
     public var isReserved: Bool?
-    public var isStarter: Bool?
     public var isStorySpotlight: Bool?
     public var isTextless: Bool?
     public var isTimeshifted: Bool?
@@ -64,10 +61,10 @@ public struct MTGJSONCard: Codable, Sendable {
     public var originalType: String?
     public var otherFaceIds: [String]?
     public var power: String?
-    public var printings: [String]?
     public var printedName: String?
     public var printedText: String?
     public var printedType: String?
+    public var printings: [String]?
     public var producedMana: [String]?
     public var promoTypes: [String]?
     public var purchaseUrls: MTGJSONPurchaseUrls
@@ -111,8 +108,6 @@ public struct MTGJSONCard: Codable, Sendable {
         borderColor: String,
         finishes: [String] = [],
         availability: [String] = [],
-        hasFoil: Bool,
-        hasNonFoil: Bool,
         identifiers: MTGJSONIdentifiers,
         legalities: MTGJSONLegalities,
         purchaseUrls: MTGJSONPurchaseUrls
@@ -136,8 +131,6 @@ public struct MTGJSONCard: Codable, Sendable {
         self.borderColor = borderColor
         self.finishes = finishes
         self.availability = availability
-        self.hasFoil = hasFoil
-        self.hasNonFoil = hasNonFoil
         self.identifiers = identifiers
         self.legalities = legalities
         self.purchaseUrls = purchaseUrls

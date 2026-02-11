@@ -1,16 +1,14 @@
 import Foundation
 
 public struct MTGJSONBoosterSheet: Codable, Sendable {
-    /// Not in JSON — it's the object key from the parent `sheets` map.
-    public var name: String = ""
-
     public let allowDuplicates: Bool?
     public let balanceColors: Bool?
+    public let cards: [MTGJSONBoosterSheetCard]?
     public let fixed: Bool?
     public let foil: Bool?
+    /// Not in JSON — it's the object key from the parent `sheets` map.
+    public var name: String = ""
     public let totalWeight: Int?
-
-    public let cards: [MTGJSONBoosterSheetCard]?
 
     private enum CodingKeys: String, CodingKey {
         case allowDuplicates, balanceColors, fixed, foil, totalWeight, cards

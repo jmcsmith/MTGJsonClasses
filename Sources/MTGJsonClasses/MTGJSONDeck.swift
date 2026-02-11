@@ -10,9 +10,9 @@ public struct MTGJSONDeck: Codable, Sendable {
     public var planes: [MTGJSONDeckCard]?
     public var releaseDate: String?
     public var schemes: [MTGJSONDeckCard]?
+    public var sealedProductUuids: [String]?
     public var sideBoard: [MTGJSONDeckCard]?
     public var sourceSetCodes: [String]?
-    public var sealedProductUuids: [String]?
     public var tokens: [MTGJSONDeckCard]?
     public var type: String?
 
