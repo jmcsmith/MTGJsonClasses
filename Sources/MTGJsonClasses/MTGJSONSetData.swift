@@ -161,9 +161,12 @@ public struct MTGJSONSetData: Codable, Sendable {
 
         let translations = try c.decode(MTGJSONTranslations.self, forKey: .translations)
 
-        let booster = try c.decodeIfPresent(MTGJSONBooster.self, forKey: .booster)
-        let sealedProduct = try c.decodeIfPresent([MTGJSONSealedProduct].self, forKey: .sealedProduct)
-        let decks = try c.decodeIfPresent([MTGJSONDeck].self, forKey: .decks)
+        // Bulk importers never read these sections; skipping their decode
+        // avoids materializing large nested structures (see .mtgjsonLeanImport).
+        let lean = decoder.isLeanImport
+        let booster: MTGJSONBooster? = lean ? nil : try c.decodeIfPresent(MTGJSONBooster.self, forKey: .booster)
+        let sealedProduct: [MTGJSONSealedProduct]? = lean ? nil : try c.decodeIfPresent([MTGJSONSealedProduct].self, forKey: .sealedProduct)
+        let decks: [MTGJSONDeck]? = lean ? nil : try c.decodeIfPresent([MTGJSONDeck].self, forKey: .decks)
 
         let cards = try c.decode([MTGJSONCard].self, forKey: .cards)
         let tokens = try c.decode([MTGJSONToken].self, forKey: .tokens)
